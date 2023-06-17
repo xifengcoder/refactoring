@@ -25,7 +25,7 @@ class Customer {
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
             //show figures for this rental
-            result += "\t" + each.getMovie().getTitle()+ "\t" +
+            result += "\t" + each.getMovie().getTitle() + "\t" +
                     String.valueOf(each.getCharge()) + "\n";
         }
         //add footer lines
@@ -38,7 +38,7 @@ class Customer {
     }
 
     public String htmlStatement() {
-        Enumeration rentals = _rentals.elements();
+        Enumeration<Rental> rentals = _rentals.elements();
         String result = "<H1>Rentals for <EM>" + getName() + "</EM></H1><P>\n";
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
@@ -56,11 +56,11 @@ class Customer {
         return result;
     }
 
-    private int getTotalFrequentRenterPoints(){
+    private int getTotalFrequentRenterPoints() {
         int result = 0;
-        Enumeration rentals = _rentals.elements();
+        Enumeration<Rental> rentals = _rentals.elements();
         while (rentals.hasMoreElements()) {
-            Rental each = (Rental) rentals.nextElement();
+            Rental each = rentals.nextElement();
             result += each.getFrequentRenterPoints();
         }
         return result;
@@ -68,7 +68,7 @@ class Customer {
 
     private double getTotalCharge() {
         double result = 0;
-        Enumeration rentals = _rentals.elements();
+        Enumeration<Rental> rentals = _rentals.elements();
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
             result += each.getCharge();
